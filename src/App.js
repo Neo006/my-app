@@ -19,7 +19,6 @@ const Technologies = () => {
           <li>html</li>
           <li>js</li>
           <li>react</li>
-          <li>react</li>
         </ul>
       </div>
   );
