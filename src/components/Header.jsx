@@ -4,7 +4,7 @@ import s from './header.module.css';
 const Header = () => {
     return (
         <header className={s.header}>
-            <nav className="navbar navbar-expand-lg w-100 navbar-light">
+            <nav className={`${s.navbar} navbar navbar-expand-lg w-100 navbar-light`}>
                 <a className="navbar-brand" href="#">Navbar</a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
