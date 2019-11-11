@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Dialogs = () => {
+const Settings = () => {
     return (
         <div className="col-md-10">
-            Dialogs
+            Settings
         </div>
     );
 }
 
-export default Dialogs;
+export default Settings;
