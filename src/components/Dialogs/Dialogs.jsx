@@ -1,10 +1,11 @@
 import React from 'react';
 
 import s from './dialogs.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { faLocationArrow } from '@fortawesome/free-solid-svg-icons';
-import { faPaperclip } from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faSearch} from '@fortawesome/free-solid-svg-icons';
+import {faLocationArrow} from '@fortawesome/free-solid-svg-icons';
+import {faPaperclip} from '@fortawesome/free-solid-svg-icons';
+import {NavLink} from "react-router-dom";
 
 const Dialogs = () => {
     return (
@@ -14,96 +15,110 @@ const Dialogs = () => {
                     <div className={`${s.card} card mb-sm-3 mb-md-0 contacts_card`}>
                         <div className={`${s.cardHeader} card-header`}>
                             <div className="input-group">
-                                <input type="text" placeholder="Search..." name="" className={`${s.search} form-control`}/>
-                                    <div className="input-group-prepend">
-                                        <span className={`input-group-text ${s.searchBtn}`}><FontAwesomeIcon icon={faSearch} /></span>
-                                    </div>
+                                <input type="text" placeholder="Search..." name=""
+                                       className={`${s.search} form-control`}/>
+                                <div className="input-group-prepend">
+                                    <span className={`input-group-text ${s.searchBtn}`}><FontAwesomeIcon
+                                        icon={faSearch}/></span>
+                                </div>
                             </div>
                         </div>
                         <div className={`${s.contactsBody} card-body`}>
                             <ui className={s.contacts}>
-                                <li className={s.active}>
-                                    <div className="d-flex bd-highlight">
-                                        <div className={s.imgCont}>
-                                            <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
-                                                 className={`rounded-circle ${s.userImg}`}/>
+                                <li>
+                                    <NavLink to="/dialogs/1" activeClassName={s.active}>
+                                        <div className="d-flex bd-highlight">
+                                            <div className={s.imgCont}>
+                                                <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
+                                                     className={`rounded-circle ${s.userImg}`}/>
                                                 <span className={s.onlineIcon}></span>
+                                            </div>
+                                            <div className={s.userInfo}>
+                                                <span>William</span>
+                                                <p>William is online</p>
+                                            </div>
                                         </div>
-                                        <div className={s.userInfo}>
-                                            <span>William</span>
-                                            <p>William is online</p>
-                                        </div>
-                                    </div>
+                                    </NavLink>
                                 </li>
                                 <li>
-                                    <div className="d-flex bd-highlight">
-                                        <div className={s.imgCont}>
-                                            <img
-                                                src="https://c-sf.smule.com/sf/s78/arr/dd/c2/fbf89614-ffe8-4609-8126-c22bda35a77d.jpg"
-                                                className={`rounded-circle ${s.userImg}`}/>
+                                    <NavLink to="/dialogs/2" activeClassName={s.active}>
+                                        <div className="d-flex bd-highlight">
+                                            <div className={s.imgCont}>
+                                                <img
+                                                    src="https://c-sf.smule.com/sf/s78/arr/dd/c2/fbf89614-ffe8-4609-8126-c22bda35a77d.jpg"
+                                                    className={`rounded-circle ${s.userImg}`}/>
                                                 <span className={`${s.onlineIcon} ${s.offline}`}></span>
+                                            </div>
+                                            <div className={s.userInfo}>
+                                                <span>Emma Stones</span>
+                                                <p>Emma left 7 mins ago</p>
+                                            </div>
                                         </div>
-                                        <div className={s.userInfo}>
-                                            <span>Emma Stones</span>
-                                            <p>Emma left 7 mins ago</p>
-                                        </div>
-                                    </div>
+                                    </NavLink>
                                 </li>
                                 <li>
-                                    <div className="d-flex bd-highlight">
-                                        <div className={s.imgCont}>
-                                            <img
-                                                src="https://is2-ssl.mzstatic.com/image/thumb/Purple22/v4/7c/1f/d7/7c1fd7d5-4b5d-8710-0bdd-23509256166c/source/256x256bb.jpg"
-                                                className={`rounded-circle ${s.userImg}`}/>
+                                    <NavLink to="/dialogs/3" activeClassName={s.active}>
+                                        <div className="d-flex bd-highlight">
+                                            <div className={s.imgCont}>
+                                                <img
+                                                    src="https://is2-ssl.mzstatic.com/image/thumb/Purple22/v4/7c/1f/d7/7c1fd7d5-4b5d-8710-0bdd-23509256166c/source/256x256bb.jpg"
+                                                    className={`rounded-circle ${s.userImg}`}/>
                                                 <span className={s.onlineIcon}></span>
+                                            </div>
+                                            <div className={s.userInfo}>
+                                                <span>Noah Gates</span>
+                                                <p>Noah is online</p>
+                                            </div>
                                         </div>
-                                        <div className={s.userInfo}>
-                                            <span>Noah Gates</span>
-                                            <p>Noah is online</p>
-                                        </div>
-                                    </div>
+                                    </NavLink>
                                 </li>
                                 <li>
-                                    <div className="d-flex bd-highlight">
-                                        <div className={s.imgCont}>
-                                            <img
-                                                src="https://is4-ssl.mzstatic.com/image/thumb/Purple127/v4/20/f8/3e/20f83ea2-54e6-9cc8-d72d-b12b426c27bd/source/256x256bb.jpg"
-                                                className={`rounded-circle ${s.userImg}`}/>
-                                            <span className={`${s.onlineIcon}`}></span>
+                                    <NavLink to="/dialogs/4" activeClassName={s.active}>
+                                        <div className="d-flex bd-highlight">
+                                            <div className={s.imgCont}>
+                                                <img
+                                                    src="https://is4-ssl.mzstatic.com/image/thumb/Purple127/v4/20/f8/3e/20f83ea2-54e6-9cc8-d72d-b12b426c27bd/source/256x256bb.jpg"
+                                                    className={`rounded-circle ${s.userImg}`}/>
+                                                <span className={`${s.onlineIcon}`}></span>
+                                            </div>
+                                            <div className={s.userInfo}>
+                                                <span>Ella Smith</span>
+                                                <p>Ella left 30 mins ago</p>
+                                            </div>
                                         </div>
-                                        <div className={s.userInfo}>
-                                            <span>Ella Smith</span>
-                                            <p>Ella left 30 mins ago</p>
-                                        </div>
-                                    </div>
+                                    </NavLink>
                                 </li>
                                 <li>
-                                    <div className="d-flex bd-highlight">
-                                        <div className={s.imgCont}>
-                                            <img
-                                                src="https://static.turbosquid.com/Preview/001214/650/2V/boy-cartoon-3D-model_D.jpg"
-                                                className={`rounded-circle ${s.userImg}`}/>
-                                            <span className={`${s.onlineIcon} ${s.offline}`}></span>
+                                    <NavLink to="/dialogs/5" activeClassName={s.active}>
+                                        <div className="d-flex bd-highlight">
+                                            <div className={s.imgCont}>
+                                                <img
+                                                    src="https://static.turbosquid.com/Preview/001214/650/2V/boy-cartoon-3D-model_D.jpg"
+                                                    className={`rounded-circle ${s.userImg}`}/>
+                                                <span className={`${s.onlineIcon} ${s.offline}`}></span>
+                                            </div>
+                                            <div className={s.userInfo}>
+                                                <span>Frank Johnson</span>
+                                                <p>Frank left 50 mins ago</p>
+                                            </div>
                                         </div>
-                                        <div className={s.userInfo}>
-                                            <span>Frank Johnson</span>
-                                            <p>Frank left 50 mins ago</p>
-                                        </div>
-                                    </div>
+                                    </NavLink>
                                 </li>
                                 <li>
-                                    <div className="d-flex bd-highlight">
-                                        <div className={s.imgCont}>
-                                            <img
-                                                src="https://i.pinimg.com/474x/f6/f2/8f/f6f28fe98bb33343eff2fbdf2a4e6e47.jpg"
-                                                className={`rounded-circle ${s.userImg}`}/>
-                                            <span className={`${s.onlineIcon} ${s.offline}`}></span>
+                                    <NavLink to="/dialogs/6" activeClassName={s.active}>
+                                        <div className="d-flex bd-highlight">
+                                            <div className={s.imgCont}>
+                                                <img
+                                                    src="https://i.pinimg.com/474x/f6/f2/8f/f6f28fe98bb33343eff2fbdf2a4e6e47.jpg"
+                                                    className={`rounded-circle ${s.userImg}`}/>
+                                                <span className={`${s.onlineIcon} ${s.offline}`}></span>
+                                            </div>
+                                            <div className={s.userInfo}>
+                                                <span>Ariana Anderson</span>
+                                                <p>Ariana left 50 mins ago</p>
+                                            </div>
                                         </div>
-                                        <div className={s.userInfo}>
-                                            <span>Ariana Anderson</span>
-                                            <p>Ariana left 50 mins ago</p>
-                                        </div>
-                                    </div>
+                                    </NavLink>
                                 </li>
                             </ui>
                         </div>
@@ -117,7 +132,7 @@ const Dialogs = () => {
                                 <div className={s.imgCont}>
                                     <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
                                          className={`rounded-circle ${s.userImg}`}/>
-                                        <span className={s.onlineIcon}></span>
+                                    <span className={s.onlineIcon}></span>
                                 </div>
                                 <div className={s.userInfo}>
                                     <span>Chat with William</span>
@@ -216,12 +231,14 @@ const Dialogs = () => {
                         <div className={`${s.cardFooter} card-footer`}>
                             <div className="input-group">
                                 <div className="input-group-append">
-                                    <span className={`input-group-text ${s.attachBtn}`}><FontAwesomeIcon icon={faPaperclip} /></span>
+                                    <span className={`input-group-text ${s.attachBtn}`}><FontAwesomeIcon
+                                        icon={faPaperclip}/></span>
                                 </div>
                                 <textarea name="" className={`${s.typeMsg} form-control`}
                                           placeholder="Type your message..."></textarea>
                                 <div className="input-group-append">
-                                    <span className={`input-group-text ${s.sendBtn}`}><FontAwesomeIcon icon={faLocationArrow} /></span>
+                                    <span className={`input-group-text ${s.sendBtn}`}><FontAwesomeIcon
+                                        icon={faLocationArrow}/></span>
                                 </div>
                             </div>
                         </div>

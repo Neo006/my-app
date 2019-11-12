@@ -91,10 +91,15 @@
     padding: 0;
 }
 
-.contacts li {
+.contacts li a {
+    display: block;
     width: 100% !important;
     padding: 5px 10px;
     margin-bottom: 15px !important;
+}
+
+.contacts li a:hover {
+    text-decoration: none;
 }
 
 .active {
