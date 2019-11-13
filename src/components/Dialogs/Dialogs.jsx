@@ -10,19 +10,21 @@ import {NavLink} from "react-router-dom";
 const DialogItem = (props) => {
     let path = "/dialogs/" + props.id;
     return (
-        <NavLink to={path} activeClassName={s.active}>
-            <div className="d-flex bd-highlight">
-                <div className={s.imgCont}>
-                    <img src={props.img}
-                         className={`rounded-circle ${s.userImg}`}/>
-                    <span className={`${s.onlineIcon} ${props.onlineStatus}`}></span>
+        <li>
+            <NavLink to={path} activeClassName={s.active}>
+                <div className="d-flex bd-highlight">
+                    <div className={s.imgCont}>
+                        <img src={props.img}
+                             className={`rounded-circle ${s.userImg}`}/>
+                        <span className={`${s.onlineIcon} ${props.onlineClass}`}></span>
+                    </div>
+                    <div className={s.userInfo}>
+                        <span>{props.name} {props.surname}</span>
+                        <p>{props.name} {props.status}</p>
+                    </div>
                 </div>
-                <div className={s.userInfo}>
-                    <span>{props.name} {props.surname}</span>
-                    <p>{props.name} {props.status}</p>
-                </div>
-            </div>
-        </NavLink>
+            </NavLink>
+        </li>
     );
 }
 
@@ -58,6 +60,23 @@ const MessageAnswer = (props) => {
 }
 
 const Dialogs = () => {
+
+    let dialogsData = [
+        {id: 1, name: 'William', surname: '', status: 'is online', onlineClass: '', img: 'https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg'},
+        {id: 2, name: 'Emma', surname: 'Stones', status: 'left 7 mins ago', onlineClass: s.offline, img: 'https://c-sf.smule.com/sf/s78/arr/dd/c2/fbf89614-ffe8-4609-8126-c22bda35a77d.jpg'},
+        {id: 3, name: 'Noah', surname: 'Gates', status: 'is online', onlineClass: '', img: 'https://is2-ssl.mzstatic.com/image/thumb/Purple22/v4/7c/1f/d7/7c1fd7d5-4b5d-8710-0bdd-23509256166c/source/256x256bb.jpg'},
+        {id: 4, name: 'Ella', surname: 'Smith', status: 'is online', onlineClass: '', img: 'https://is4-ssl.mzstatic.com/image/thumb/Purple127/v4/20/f8/3e/20f83ea2-54e6-9cc8-d72d-b12b426c27bd/source/256x256bb.jpg'},
+        {id: 5, name: 'Frank', surname: 'Johnson', status: 'left 50 mins ago', onlineClass: s.offline, img: 'https://static.turbosquid.com/Preview/001214/650/2V/boy-cartoon-3D-model_D.jpg'},
+        {id: 6, name: 'Ariana', surname: 'Anderson', status: 'left 32 mins ago', onlineClass: s.offline, img: 'https://i.pinimg.com/474x/f6/f2/8f/f6f28fe98bb33343eff2fbdf2a4e6e47.jpg'}
+    ];
+
+    let dialogElements = dialogsData
+        .map(d => {
+            return (
+                <DialogItem id={d.id} name={d.name} surname={d.surname} status={d.status} onlineClass={d.onlineClass} img={d.img}/>
+            );
+        });
+
     return (
         <div className="col-md-10">
             <div className="row">
@@ -75,33 +94,7 @@ const Dialogs = () => {
                         </div>
                         <div className={`${s.contactsBody} card-body`}>
                             <ui className={s.contacts}>
-                                <li>
-                                    <DialogItem name="William" surname="" id="1" status="is online" onlineStatus=""
-                                                img="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"/>
-                                </li>
-                                <li>
-                                    <DialogItem name="Emma" surname="Stones" id="2" status="left 7 mins ago"
-                                                onlineStatus={s.offline}
-                                                img="https://c-sf.smule.com/sf/s78/arr/dd/c2/fbf89614-ffe8-4609-8126-c22bda35a77d.jpg"/>
-                                </li>
-                                <li>
-                                    <DialogItem name="Noah" surname="Gates" id="3" status="is online" onlineStatus=""
-                                                img="https://is2-ssl.mzstatic.com/image/thumb/Purple22/v4/7c/1f/d7/7c1fd7d5-4b5d-8710-0bdd-23509256166c/source/256x256bb.jpg"/>
-                                </li>
-                                <li>
-                                    <DialogItem name="Ella" surname="Smith" id="4" status="is online" onlineStatus=""
-                                                img="https://is4-ssl.mzstatic.com/image/thumb/Purple127/v4/20/f8/3e/20f83ea2-54e6-9cc8-d72d-b12b426c27bd/source/256x256bb.jpg"/>
-                                </li>
-                                <li>
-                                    <DialogItem name="Frank" surname="Johnson" id="5" status="left 50 mins ago"
-                                                onlineStatus={s.offline}
-                                                img="https://static.turbosquid.com/Preview/001214/650/2V/boy-cartoon-3D-model_D.jpg"/>
-                                </li>
-                                <li>
-                                    <DialogItem name="Ariana" surname="Anderson" id="6" status="left 32 mins ago"
-                                                onlineStatus={s.offline}
-                                                img="https://i.pinimg.com/474x/f6/f2/8f/f6f28fe98bb33343eff2fbdf2a4e6e47.jpg"/>
-                                </li>
+                                {dialogElements}
                             </ui>
                         </div>
                         <div className={`${s.cardFooter} card-footer`}></div>
