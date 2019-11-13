@@ -7,6 +7,56 @@ import {faLocationArrow} from '@fortawesome/free-solid-svg-icons';
 import {faPaperclip} from '@fortawesome/free-solid-svg-icons';
 import {NavLink} from "react-router-dom";
 
+const DialogItem = (props) => {
+    let path = "/dialogs/" + props.id;
+    return (
+        <NavLink to={path} activeClassName={s.active}>
+            <div className="d-flex bd-highlight">
+                <div className={s.imgCont}>
+                    <img src={props.img}
+                         className={`rounded-circle ${s.userImg}`}/>
+                    <span className={`${s.onlineIcon} ${props.onlineStatus}`}></span>
+                </div>
+                <div className={s.userInfo}>
+                    <span>{props.name} {props.surname}</span>
+                    <p>{props.name} {props.status}</p>
+                </div>
+            </div>
+        </NavLink>
+    );
+}
+
+const Message = (props) => {
+    return (
+        <div className="d-flex justify-content-start mb-4">
+            <div className={s.imgContMsg}>
+                <img src={props.img}
+                     className={`rounded-circle ${s.userImgMsg}`}/>
+            </div>
+            <div className={s.msgContainer}>
+                {props.message}
+                <span className={s.msgTime}>{props.time}</span>
+            </div>
+        </div>
+    );
+}
+
+const MessageAnswer = (props) => {
+    return (
+        <div className="d-flex justify-content-end mb-4">
+            <div className={s.msgCotainerSend}>
+                {props.message}
+                <span className={s.msgTimeSend}>{props.time}</span>
+            </div>
+            <div className={s.imgContMsg}>
+                <img
+                    src={props.img}
+                    className={`rounded-circle ${s.userImgMsg}`}/>
+            </div>
+        </div>
+    );
+}
+
 const Dialogs = () => {
     return (
         <div className="col-md-10">
@@ -26,99 +76,31 @@ const Dialogs = () => {
                         <div className={`${s.contactsBody} card-body`}>
                             <ui className={s.contacts}>
                                 <li>
-                                    <NavLink to="/dialogs/1" activeClassName={s.active}>
-                                        <div className="d-flex bd-highlight">
-                                            <div className={s.imgCont}>
-                                                <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
-                                                     className={`rounded-circle ${s.userImg}`}/>
-                                                <span className={s.onlineIcon}></span>
-                                            </div>
-                                            <div className={s.userInfo}>
-                                                <span>William</span>
-                                                <p>William is online</p>
-                                            </div>
-                                        </div>
-                                    </NavLink>
+                                    <DialogItem name="William" surname="" id="1" status="is online" onlineStatus=""
+                                                img="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"/>
                                 </li>
                                 <li>
-                                    <NavLink to="/dialogs/2" activeClassName={s.active}>
-                                        <div className="d-flex bd-highlight">
-                                            <div className={s.imgCont}>
-                                                <img
-                                                    src="https://c-sf.smule.com/sf/s78/arr/dd/c2/fbf89614-ffe8-4609-8126-c22bda35a77d.jpg"
-                                                    className={`rounded-circle ${s.userImg}`}/>
-                                                <span className={`${s.onlineIcon} ${s.offline}`}></span>
-                                            </div>
-                                            <div className={s.userInfo}>
-                                                <span>Emma Stones</span>
-                                                <p>Emma left 7 mins ago</p>
-                                            </div>
-                                        </div>
-                                    </NavLink>
+                                    <DialogItem name="Emma" surname="Stones" id="2" status="left 7 mins ago"
+                                                onlineStatus={s.offline}
+                                                img="https://c-sf.smule.com/sf/s78/arr/dd/c2/fbf89614-ffe8-4609-8126-c22bda35a77d.jpg"/>
                                 </li>
                                 <li>
-                                    <NavLink to="/dialogs/3" activeClassName={s.active}>
-                                        <div className="d-flex bd-highlight">
-                                            <div className={s.imgCont}>
-                                                <img
-                                                    src="https://is2-ssl.mzstatic.com/image/thumb/Purple22/v4/7c/1f/d7/7c1fd7d5-4b5d-8710-0bdd-23509256166c/source/256x256bb.jpg"
-                                                    className={`rounded-circle ${s.userImg}`}/>
-                                                <span className={s.onlineIcon}></span>
-                                            </div>
-                                            <div className={s.userInfo}>
-                                                <span>Noah Gates</span>
-                                                <p>Noah is online</p>
-                                            </div>
-                                        </div>
-                                    </NavLink>
+                                    <DialogItem name="Noah" surname="Gates" id="3" status="is online" onlineStatus=""
+                                                img="https://is2-ssl.mzstatic.com/image/thumb/Purple22/v4/7c/1f/d7/7c1fd7d5-4b5d-8710-0bdd-23509256166c/source/256x256bb.jpg"/>
                                 </li>
                                 <li>
-                                    <NavLink to="/dialogs/4" activeClassName={s.active}>
-                                        <div className="d-flex bd-highlight">
-                                            <div className={s.imgCont}>
-                                                <img
-                                                    src="https://is4-ssl.mzstatic.com/image/thumb/Purple127/v4/20/f8/3e/20f83ea2-54e6-9cc8-d72d-b12b426c27bd/source/256x256bb.jpg"
-                                                    className={`rounded-circle ${s.userImg}`}/>
-                                                <span className={`${s.onlineIcon}`}></span>
-                                            </div>
-                                            <div className={s.userInfo}>
-                                                <span>Ella Smith</span>
-                                                <p>Ella left 30 mins ago</p>
-                                            </div>
-                                        </div>
-                                    </NavLink>
+                                    <DialogItem name="Ella" surname="Smith" id="4" status="is online" onlineStatus=""
+                                                img="https://is4-ssl.mzstatic.com/image/thumb/Purple127/v4/20/f8/3e/20f83ea2-54e6-9cc8-d72d-b12b426c27bd/source/256x256bb.jpg"/>
                                 </li>
                                 <li>
-                                    <NavLink to="/dialogs/5" activeClassName={s.active}>
-                                        <div className="d-flex bd-highlight">
-                                            <div className={s.imgCont}>
-                                                <img
-                                                    src="https://static.turbosquid.com/Preview/001214/650/2V/boy-cartoon-3D-model_D.jpg"
-                                                    className={`rounded-circle ${s.userImg}`}/>
-                                                <span className={`${s.onlineIcon} ${s.offline}`}></span>
-                                            </div>
-                                            <div className={s.userInfo}>
-                                                <span>Frank Johnson</span>
-                                                <p>Frank left 50 mins ago</p>
-                                            </div>
-                                        </div>
-                                    </NavLink>
+                                    <DialogItem name="Frank" surname="Johnson" id="5" status="left 50 mins ago"
+                                                onlineStatus={s.offline}
+                                                img="https://static.turbosquid.com/Preview/001214/650/2V/boy-cartoon-3D-model_D.jpg"/>
                                 </li>
                                 <li>
-                                    <NavLink to="/dialogs/6" activeClassName={s.active}>
-                                        <div className="d-flex bd-highlight">
-                                            <div className={s.imgCont}>
-                                                <img
-                                                    src="https://i.pinimg.com/474x/f6/f2/8f/f6f28fe98bb33343eff2fbdf2a4e6e47.jpg"
-                                                    className={`rounded-circle ${s.userImg}`}/>
-                                                <span className={`${s.onlineIcon} ${s.offline}`}></span>
-                                            </div>
-                                            <div className={s.userInfo}>
-                                                <span>Ariana Anderson</span>
-                                                <p>Ariana left 50 mins ago</p>
-                                            </div>
-                                        </div>
-                                    </NavLink>
+                                    <DialogItem name="Ariana" surname="Anderson" id="6" status="left 32 mins ago"
+                                                onlineStatus={s.offline}
+                                                img="https://i.pinimg.com/474x/f6/f2/8f/f6f28fe98bb33343eff2fbdf2a4e6e47.jpg"/>
                                 </li>
                             </ui>
                         </div>
@@ -154,79 +136,20 @@ const Dialogs = () => {
                             </div>
                         </div>
                         <div className={`${s.msgCardBody} card-body`}>
-                            <div className="d-flex justify-content-start mb-4">
-                                <div className={s.imgContMsg}>
-                                    <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
-                                         className={`rounded-circle ${s.userImgMsg}`}/>
-                                </div>
-                                <div className={s.msgContainer}>
-                                    Hi, how are you Lucas?
-                                    <span className={s.msgTime}>8:40 AM, Today</span>
-                                </div>
-                            </div>
-                            <div className="d-flex justify-content-end mb-4">
-                                <div className={s.msgCotainerSend}>
-                                    Hi William i am good tnx how about you?
-                                    <span className={s.msgTimeSend}>8:55 AM, Today</span>
-                                </div>
-                                <div className={s.imgContMsg}>
-                                    <img
-                                        src="https://66.media.tumblr.com/3ca79e6d6874b471ee9e55b6cadc448e/tumblr_outgvdQKsK1w7t6tto3_400.png"
-                                        className={`rounded-circle ${s.userImgMsg}`}/>
-                                </div>
-                            </div>
-                            <div className="d-flex justify-content-start mb-4">
-                                <div className={s.imgContMsg}>
-                                    <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
-                                         className={`rounded-circle ${s.userImgMsg}`}/>
-                                </div>
-                                <div className={s.msgContainer}>
-                                    I am good too, thank you for your chat template
-                                    <span className={s.msgTime}>9:00 AM, Today</span>
-                                </div>
-                            </div>
-                            <div className="d-flex justify-content-end mb-4">
-                                <div className={s.msgCotainerSend}>
-                                    You are welcome
-                                    <span className={s.msgTimeSend}>9:05 AM, Today</span>
-                                </div>
-                                <div className={s.imgContMsg}>
-                                    <img
-                                        src="https://66.media.tumblr.com/3ca79e6d6874b471ee9e55b6cadc448e/tumblr_outgvdQKsK1w7t6tto3_400.png"
-                                        className={`rounded-circle ${s.userImgMsg}`}/>
-                                </div>
-                            </div>
-                            <div className="d-flex justify-content-start mb-4">
-                                <div className={s.imgContMsg}>
-                                    <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
-                                         className={`rounded-circle ${s.userImgMsg}`}/>
-                                </div>
-                                <div className={s.msgContainer}>
-                                    I am looking for your next templates
-                                    <span className={s.msgTime}>9:07 AM, Today</span>
-                                </div>
-                            </div>
-                            <div className="d-flex justify-content-end mb-4">
-                                <div className={s.msgCotainerSend}>
-                                    Ok, thank you have a good day
-                                    <span className={s.msgTimeSend}>9:10 AM, Today</span>
-                                </div>
-                                <div className={s.imgContMsg}>
-                                    <img
-                                        src="https://66.media.tumblr.com/3ca79e6d6874b471ee9e55b6cadc448e/tumblr_outgvdQKsK1w7t6tto3_400.png"
-                                        className={`rounded-circle ${s.userImgMsg}`}/>
-                                </div>
-                            </div>
-                            <div className="d-flex justify-content-start mb-4">
-                                <div className={s.imgContMsg}>
-                                    <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
-                                         className={`rounded-circle ${s.userImgMsg}`}/>
-                                </div>
-                                <div className={s.msgContainer}>
-                                    Bye, see you
-                                    <span className={s.msgTime}>9:12 AM, Today</span>
-                                </div>
-                            </div>
+                            <Message message="Hi, how are you Lucas?" time="8:40 AM, Today"
+                                     img="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"/>
+                            <MessageAnswer message="Hi William i am good tnx how about you?" time="8:55 AM, Today"
+                                           img="https://66.media.tumblr.com/3ca79e6d6874b471ee9e55b6cadc448e/tumblr_outgvdQKsK1w7t6tto3_400.png"/>
+                            <Message message="I am good too, thank you for your chat template" time="9:00 AM, Today"
+                                     img="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"/>
+                            <MessageAnswer message="You are welcome" time="9:05 AM, Today"
+                                           img="https://66.media.tumblr.com/3ca79e6d6874b471ee9e55b6cadc448e/tumblr_outgvdQKsK1w7t6tto3_400.png"/>
+                            <Message message="I am looking for your next templates" time="9:07 AM, Today"
+                                     img="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"/>
+                            <MessageAnswer message="Ok, thank you have a good day" time="9:10 AM, Today"
+                                           img="https://66.media.tumblr.com/3ca79e6d6874b471ee9e55b6cadc448e/tumblr_outgvdQKsK1w7t6tto3_400.png"/>
+                            <Message message="Bye, see you" time="9:12 AM, Today"
+                                     img="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"/>
                         </div>
                         <div className={`${s.cardFooter} card-footer`}>
                             <div className="input-group">
