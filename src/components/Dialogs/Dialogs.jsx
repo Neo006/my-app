@@ -29,34 +29,34 @@ const DialogItem = (props) => {
 }
 
 const Message = (props) => {
-    return (
-        <div className="d-flex justify-content-start mb-4">
-            <div className={s.imgContMsg}>
-                <img src={props.img}
-                     className={`rounded-circle ${s.userImgMsg}`}/>
+    if(props.messageType == 'message') {
+        return (
+            <div className="d-flex justify-content-start mb-4">
+                <div className={s.imgContMsg}>
+                    <img src={props.img}
+                         className={`rounded-circle ${s.userImgMsg}`}/>
+                </div>
+                <div className={s.msgContainer}>
+                    {props.message}
+                    <span className={s.msgTime}>{props.time}</span>
+                </div>
             </div>
-            <div className={s.msgContainer}>
-                {props.message}
-                <span className={s.msgTime}>{props.time}</span>
+        );
+    } else {
+        return (
+            <div className="d-flex justify-content-end mb-4">
+                <div className={s.msgCotainerSend}>
+                    {props.message}
+                    <span className={s.msgTimeSend}>{props.time}</span>
+                </div>
+                <div className={s.imgContMsg}>
+                    <img
+                        src={props.img}
+                        className={`rounded-circle ${s.userImgMsg}`}/>
+                </div>
             </div>
-        </div>
-    );
-}
-
-const MessageAnswer = (props) => {
-    return (
-        <div className="d-flex justify-content-end mb-4">
-            <div className={s.msgCotainerSend}>
-                {props.message}
-                <span className={s.msgTimeSend}>{props.time}</span>
-            </div>
-            <div className={s.imgContMsg}>
-                <img
-                    src={props.img}
-                    className={`rounded-circle ${s.userImgMsg}`}/>
-            </div>
-        </div>
-    );
+        );
+    }
 }
 
 const Dialogs = () => {
@@ -71,11 +71,21 @@ const Dialogs = () => {
     ];
 
     let dialogElements = dialogsData
-        .map(d => {
-            return (
-                <DialogItem id={d.id} name={d.name} surname={d.surname} status={d.status} onlineClass={d.onlineClass} img={d.img}/>
-            );
-        });
+        .map(d => <DialogItem id={d.id} name={d.name} surname={d.surname} status={d.status} onlineClass={d.onlineClass}
+                              img={d.img}/>);
+
+    let message = [
+        {id: 1, message: 'Hi, how are you Lucas?', time: '8:40 AM, Today', messageType: 'message', img: 'https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg'},
+        {id: 2, message: 'Hi William i am good tnx how about you?', time: '8:55 AM, Today', messageType: 'answer', img: 'https://66.media.tumblr.com/3ca79e6d6874b471ee9e55b6cadc448e/tumblr_outgvdQKsK1w7t6tto3_400.png'},
+        {id: 3, message: 'I am good too, thank you for your chat template', time: '9:00 AM, Today', messageType: 'message', img: 'https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg'},
+        {id: 4, message: 'You are welcome', time: '9:05 AM, Today', messageType: 'answer', img: 'https://66.media.tumblr.com/3ca79e6d6874b471ee9e55b6cadc448e/tumblr_outgvdQKsK1w7t6tto3_400.png'},
+        {id: 5, message: 'I am looking for your next templates', time: '9:07 AM, Today', messageType: 'message', img: 'https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg'},
+        {id: 6, message: 'Ok, thank you have a good day', time: '9:10 AM, Today', messageType: 'answer', img: 'https://66.media.tumblr.com/3ca79e6d6874b471ee9e55b6cadc448e/tumblr_outgvdQKsK1w7t6tto3_400.png'},
+        {id: 7, message: 'Bye, see you', time: '9:12 AM, Today', messageType: 'message', img: 'https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg'}
+    ];
+
+    let messageElement = message.map(m => <Message message={m.message} time={m.time} messageType={m.messageType}
+                                                   img={m.img}/>);
 
     return (
         <div className="col-md-10">
@@ -129,20 +139,7 @@ const Dialogs = () => {
                             </div>
                         </div>
                         <div className={`${s.msgCardBody} card-body`}>
-                            <Message message="Hi, how are you Lucas?" time="8:40 AM, Today"
-                                     img="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"/>
-                            <MessageAnswer message="Hi William i am good tnx how about you?" time="8:55 AM, Today"
-                                           img="https://66.media.tumblr.com/3ca79e6d6874b471ee9e55b6cadc448e/tumblr_outgvdQKsK1w7t6tto3_400.png"/>
-                            <Message message="I am good too, thank you for your chat template" time="9:00 AM, Today"
-                                     img="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"/>
-                            <MessageAnswer message="You are welcome" time="9:05 AM, Today"
-                                           img="https://66.media.tumblr.com/3ca79e6d6874b471ee9e55b6cadc448e/tumblr_outgvdQKsK1w7t6tto3_400.png"/>
-                            <Message message="I am looking for your next templates" time="9:07 AM, Today"
-                                     img="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"/>
-                            <MessageAnswer message="Ok, thank you have a good day" time="9:10 AM, Today"
-                                           img="https://66.media.tumblr.com/3ca79e6d6874b471ee9e55b6cadc448e/tumblr_outgvdQKsK1w7t6tto3_400.png"/>
-                            <Message message="Bye, see you" time="9:12 AM, Today"
-                                     img="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"/>
+                            {messageElement}
                         </div>
                         <div className={`${s.cardFooter} card-footer`}>
                             <div className="input-group">
