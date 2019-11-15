@@ -2,6 +2,14 @@ import React from 'react';
 import Post from "./Post/Post";
 
 const MyPosts = () => {
+
+    let posts = [
+        {id: 1, message: 'Hi, how are you?', likesCount: '15'},
+        {id: 2, message: 'It\'s my first post', likesCount: '17'}
+    ];
+
+    let postElements = posts.map(p =>  <Post message={p.message} likesCount={p.likesCount} />);
+
     return (
         <div>
             My posts
@@ -12,8 +20,7 @@ const MyPosts = () => {
                 </div>
             </div>
             <div>
-                <Post message="Hi, how are you?" like="15" />
-                <Post message="It's my first post" like="20" />
+                {postElements}
             </div>
         </div>
     );

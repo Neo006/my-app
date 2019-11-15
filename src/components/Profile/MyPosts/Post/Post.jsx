@@ -6,7 +6,7 @@ const Post = (props) => {
         <div className={`${s.post} mb-2`}>
             <img src="https://img.pngio.com/png-avatar-108-images-in-collection-page-3-png-avatar-300_300.png"/>
             <p className="d-inline-block pl-2">{props.message}</p>
-            <p className="text-right">{props.like} like</p>
+            <p className="text-right">{props.likesCount} like</p>
         </div>
     );
 }

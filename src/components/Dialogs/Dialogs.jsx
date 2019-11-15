@@ -1,67 +1,16 @@
 import React from 'react';
 
 import s from './dialogs.module.css';
+import DialogItem from "./DialogItem/DialogItem";
+import Message from "./Message/Message";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSearch} from '@fortawesome/free-solid-svg-icons';
 import {faLocationArrow} from '@fortawesome/free-solid-svg-icons';
 import {faPaperclip} from '@fortawesome/free-solid-svg-icons';
-import {NavLink} from "react-router-dom";
-
-const DialogItem = (props) => {
-    let path = "/dialogs/" + props.id;
-    return (
-        <li>
-            <NavLink to={path} activeClassName={s.active}>
-                <div className="d-flex bd-highlight">
-                    <div className={s.imgCont}>
-                        <img src={props.img}
-                             className={`rounded-circle ${s.userImg}`}/>
-                        <span className={`${s.onlineIcon} ${props.onlineClass}`}></span>
-                    </div>
-                    <div className={s.userInfo}>
-                        <span>{props.name} {props.surname}</span>
-                        <p>{props.name} {props.status}</p>
-                    </div>
-                </div>
-            </NavLink>
-        </li>
-    );
-}
-
-const Message = (props) => {
-    if(props.messageType == 'message') {
-        return (
-            <div className="d-flex justify-content-start mb-4">
-                <div className={s.imgContMsg}>
-                    <img src={props.img}
-                         className={`rounded-circle ${s.userImgMsg}`}/>
-                </div>
-                <div className={s.msgContainer}>
-                    {props.message}
-                    <span className={s.msgTime}>{props.time}</span>
-                </div>
-            </div>
-        );
-    } else {
-        return (
-            <div className="d-flex justify-content-end mb-4">
-                <div className={s.msgCotainerSend}>
-                    {props.message}
-                    <span className={s.msgTimeSend}>{props.time}</span>
-                </div>
-                <div className={s.imgContMsg}>
-                    <img
-                        src={props.img}
-                        className={`rounded-circle ${s.userImgMsg}`}/>
-                </div>
-            </div>
-        );
-    }
-}
 
 const Dialogs = () => {
 
-    let dialogsData = [
+    let dialogs = [
         {id: 1, name: 'William', surname: '', status: 'is online', onlineClass: '', img: 'https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg'},
         {id: 2, name: 'Emma', surname: 'Stones', status: 'left 7 mins ago', onlineClass: s.offline, img: 'https://c-sf.smule.com/sf/s78/arr/dd/c2/fbf89614-ffe8-4609-8126-c22bda35a77d.jpg'},
         {id: 3, name: 'Noah', surname: 'Gates', status: 'is online', onlineClass: '', img: 'https://is2-ssl.mzstatic.com/image/thumb/Purple22/v4/7c/1f/d7/7c1fd7d5-4b5d-8710-0bdd-23509256166c/source/256x256bb.jpg'},
@@ -70,7 +19,7 @@ const Dialogs = () => {
         {id: 6, name: 'Ariana', surname: 'Anderson', status: 'left 32 mins ago', onlineClass: s.offline, img: 'https://i.pinimg.com/474x/f6/f2/8f/f6f28fe98bb33343eff2fbdf2a4e6e47.jpg'}
     ];
 
-    let dialogElements = dialogsData
+    let dialogElements = dialogs
         .map(d => <DialogItem id={d.id} name={d.name} surname={d.surname} status={d.status} onlineClass={d.onlineClass}
                               img={d.img}/>);
 
