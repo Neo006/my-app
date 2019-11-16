@@ -10,11 +10,12 @@ import {faPaperclip} from '@fortawesome/free-solid-svg-icons';
 
 const Dialogs = (props) => {
 
-    let dialogElements = props.dialogs
-        .map(d => <DialogItem id={d.id} name={d.name} surname={d.surname} status={d.status} onlineClass={d.onlineClass}
+    let dialogElements = props.state.dialogs
+        .map(d => <DialogItem id={d.id} name={d.name} surname={d.surname} status={d.status} onlineStatus={d.onlineStatus}
                               img={d.img}/>);
 
-    let messageElement = props.messages.map(m => <Message message={m.message} time={m.time} messageType={m.messageType}
+    let messageElement = props.state.messages
+        .map(m => <Message message={m.message} time={m.time} messageType={m.messageType}
                                                    img={m.img}/>);
 
     return (
