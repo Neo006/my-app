@@ -102,16 +102,6 @@
     text-decoration: none;
 }
 
-.active {
-    background-color: rgba(0, 0, 0, 0.3);
-}
-
-.userImg {
-    height: 70px;
-    width: 70px;
-    border: 1.5px solid #f5f6fa;
-}
-
 .userImgMsg {
     height: 40px;
     width: 40px;
@@ -119,10 +109,20 @@
 
 }
 
+.active {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
 .imgCont {
     position: relative;
     height: 70px;
     width: 70px;
+}
+
+.userImg {
+    height: 70px;
+    width: 70px;
+    border: 1.5px solid #f5f6fa;
 }
 
 .imgContMsg {
@@ -141,10 +141,6 @@
     border: 1.5px solid white;
 }
 
-.offline {
-    background-color: #c23616 !important;
-}
-
 .userInfo {
     margin-top: auto;
     margin-bottom: auto;
@@ -159,6 +155,10 @@
 .userInfo p {
     font-size: 10px;
     color: rgba(255, 255, 255, 0.6);
+}
+
+.offline {
+    background-color: #c23616 !important;
 }
 
 .videoCam {
