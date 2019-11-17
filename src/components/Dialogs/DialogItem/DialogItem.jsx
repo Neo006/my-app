@@ -13,7 +13,7 @@ const DialogItem = (props) => {
                     <div className={s.imgCont}>
                         <img src={props.img}
                              className={`rounded-circle ${s.userImg}`}/>
-                        <span className={`${s.onlineIcon} ${props.onlineStatus}`}></span>
+                        <span className={`${s.onlineIcon} ${s[props.onlineStatus]}`}></span>
                     </div>
                     <div className={s.userInfo}>
                         <span>{props.name} {props.surname}</span>
