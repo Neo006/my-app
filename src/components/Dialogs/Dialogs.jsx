@@ -18,6 +18,13 @@ const Dialogs = (props) => {
         .map(m => <Message message={m.message} time={m.time} messageType={m.messageType}
                                                    img={m.img}/>);
 
+    let newMessageElement = React.createRef();
+
+    let sendMessage = () => {
+        let text = newMessageElement.current.value;
+        alert(text);
+    }
+
     return (
         <div className="col-md-10">
             <div className="row">
@@ -78,10 +85,10 @@ const Dialogs = (props) => {
                                     <span className={`input-group-text ${s.attachBtn}`}><FontAwesomeIcon
                                         icon={faPaperclip}/></span>
                                 </div>
-                                <textarea name="" className={`${s.typeMsg} form-control`}
+                                <textarea ref={newMessageElement} name="" className={`${s.typeMsg} form-control`}
                                           placeholder="Type your message..."></textarea>
                                 <div className="input-group-append">
-                                    <span className={`input-group-text ${s.sendBtn}`}><FontAwesomeIcon
+                                    <span onClick={sendMessage} className={`input-group-text ${s.sendBtn}`}><FontAwesomeIcon
                                         icon={faLocationArrow}/></span>
                                 </div>
                             </div>
