@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-
 import {Route} from "react-router-dom";
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
@@ -16,12 +15,12 @@ const App = (props) => {
             <Header/>
             <div className="row">
                 <Navbar/>
-                <Route path="/profile" render={() => <Profile state={props.state.profilePage}
-                                                              addPost={props.addPost}
-                                                              updateNewPostText={props.updateNewPostText}/>}/>
-                <Route path="/dialogs" render={() => <Dialogs state={props.state.dialogsPage}
-                                                              addDialogMessage={props.addDialogMessage}
-                                                              updateDialogMessageText={props.updateDialogMessageText}/>}/>
+                <Route path="/profile" render={() => <Profile profilePage={props.store.state.profilePage}
+                                                              addPost={props.store.addPost}
+                                                              updateNewPostText={props.store.updateNewPostText}/>}/>
+                <Route path="/dialogs" render={() => <Dialogs dialogsPage={props.store.state.dialogsPage}
+                                                              addDialogMessage={props.store.addDialogMessage}
+                                                              updateDialogMessageText={props.store.updateDialogMessageText}/>}/>
                 <Route path="/news" component={News}/>
                 <Route path="/music" component={Music}/>
                 <Route path="/settings" component={Settings}/>

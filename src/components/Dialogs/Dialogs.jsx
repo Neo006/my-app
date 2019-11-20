@@ -1,5 +1,4 @@
 import React from 'react';
-
 import s from './dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
@@ -10,11 +9,11 @@ import {faPaperclip} from '@fortawesome/free-solid-svg-icons';
 
 const Dialogs = (props) => {
 
-    let dialogElements = props.state.dialogs
+    let dialogElements = props.dialogsPage.dialogs
         .map(d => <DialogItem id={d.id} name={d.name} surname={d.surname} status={d.status} onlineStatus={d.onlineStatus}
                               img={d.img}/>);
 
-    let messageElement = props.state.messages
+    let messageElement = props.dialogsPage.messages
         .map(m => <Message message={m.message} time={m.time} messageType={m.messageType}
                                                    img={m.img}/>);
 
@@ -91,7 +90,7 @@ const Dialogs = (props) => {
                                 </div>
                                 <textarea onChange={onMessageChange}
                                           ref={newMessageElement}
-                                          value={props.state.newMessageText}
+                                          value={props.dialogsPage.newMessageText}
                                           className={`${s.typeMsg} form-control`}
                                           placeholder="Type your message..."></textarea>
                                 <div className="input-group-append">
