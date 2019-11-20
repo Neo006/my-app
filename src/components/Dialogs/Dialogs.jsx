@@ -21,8 +21,12 @@ const Dialogs = (props) => {
     let newMessageElement = React.createRef();
 
     let sendMessage = () => {
+        props.addDialogMessage();
+    }
+
+    let onMessageChange = () => {
         let text = newMessageElement.current.value;
-        alert(text);
+        props.updateDialogMessageText(text);
     }
 
     return (
@@ -85,7 +89,10 @@ const Dialogs = (props) => {
                                     <span className={`input-group-text ${s.attachBtn}`}><FontAwesomeIcon
                                         icon={faPaperclip}/></span>
                                 </div>
-                                <textarea ref={newMessageElement} name="" className={`${s.typeMsg} form-control`}
+                                <textarea onChange={onMessageChange}
+                                          ref={newMessageElement}
+                                          value={props.state.newMessageText}
+                                          className={`${s.typeMsg} form-control`}
                                           placeholder="Type your message..."></textarea>
                                 <div className="input-group-append">
                                     <span onClick={sendMessage} className={`input-group-text ${s.sendBtn}`}><FontAwesomeIcon

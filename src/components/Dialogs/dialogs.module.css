@@ -78,6 +78,10 @@
     cursor: pointer;
 }
 
+.sendBtn:hover {
+    background-color: rgba(0, 0, 0, 0.6) !important;
+}
+
 .searchBtn {
     border-radius: 0 15px 15px 0 !important;
     background-color: rgba(0, 0, 0, 0.3) !important;
@@ -203,6 +207,7 @@
 
 .msgTimeSend {
     position: absolute;
+    min-width: 75px;
     right: 0;
     bottom: -15px;
     color: rgba(255, 255, 255, 0.5);

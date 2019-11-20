@@ -18,14 +18,15 @@ let state = {
             {id: 6, name: 'Ariana', surname: 'Anderson', status: 'left 32 mins ago', onlineStatus: 'offline', img: 'https://i.pinimg.com/474x/f6/f2/8f/f6f28fe98bb33343eff2fbdf2a4e6e47.jpg'}
         ],
         messages: [
-            {id: 1, message: 'Hi, how are you Lucas?', time: '8:40 AM, Today', messageType: 'message', img: 'https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg'},
-            {id: 2, message: 'Hi William i am good tnx how about you?', time: '8:55 AM, Today', messageType: 'answer', img: 'https://66.media.tumblr.com/3ca79e6d6874b471ee9e55b6cadc448e/tumblr_outgvdQKsK1w7t6tto3_400.png'},
-            {id: 3, message: 'I am good too, thank you for your chat template', time: '9:00 AM, Today', messageType: 'message', img: 'https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg'},
-            {id: 4, message: 'You are welcome', time: '9:05 AM, Today', messageType: 'answer', img: 'https://66.media.tumblr.com/3ca79e6d6874b471ee9e55b6cadc448e/tumblr_outgvdQKsK1w7t6tto3_400.png'},
-            {id: 5, message: 'I am looking for your next templates', time: '9:07 AM, Today', messageType: 'message', img: 'https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg'},
-            {id: 6, message: 'Ok, thank you have a good day', time: '9:10 AM, Today', messageType: 'answer', img: 'https://66.media.tumblr.com/3ca79e6d6874b471ee9e55b6cadc448e/tumblr_outgvdQKsK1w7t6tto3_400.png'},
-            {id: 7, message: 'Bye, see you', time: '9:12 AM, Today', messageType: 'message', img: 'https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg'}
-        ]
+            {id: 1, message: 'Hi, how are you Lucas?', time: '8:40 AM, Today', messageType: 'answer', img: 'https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg'},
+            {id: 2, message: 'Hi William i am good tnx how about you?', time: '8:55 AM, Today', messageType: 'message', img: 'https://66.media.tumblr.com/3ca79e6d6874b471ee9e55b6cadc448e/tumblr_outgvdQKsK1w7t6tto3_400.png'},
+            {id: 3, message: 'I am good too, thank you for your chat template', time: '9:00 AM, Today', messageType: 'answer', img: 'https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg'},
+            {id: 4, message: 'You are welcome', time: '9:05 AM, Today', messageType: 'message', img: 'https://66.media.tumblr.com/3ca79e6d6874b471ee9e55b6cadc448e/tumblr_outgvdQKsK1w7t6tto3_400.png'},
+            {id: 5, message: 'I am looking for your next templates', time: '9:07 AM, Today', messageType: 'answer', img: 'https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg'},
+            {id: 6, message: 'Ok, thank you have a good day', time: '9:10 AM, Today', messageType: 'message', img: 'https://66.media.tumblr.com/3ca79e6d6874b471ee9e55b6cadc448e/tumblr_outgvdQKsK1w7t6tto3_400.png'},
+            {id: 7, message: 'Bye, see you', time: '9:12 AM, Today', messageType: 'answer', img: 'https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg'}
+        ],
+        newMessageText: ''
     }
 }
 
@@ -34,7 +35,7 @@ export let addPost = () => {
         id: 3,
         message: state.profilePage.newPostText,
         likesCount: 0
-    }
+    };
     state.profilePage.posts.push(newPost);
     state.profilePage.newPostText = '';
     rerenderEntireTree(state);
@@ -42,6 +43,24 @@ export let addPost = () => {
 
 export let updateNewPostText = (newText) => {
     state.profilePage.newPostText = newText;
+    rerenderEntireTree(state);
+}
+
+export let addDialogMessage = () => {
+    let newMessage = {
+        id: 8,
+        message: state.dialogsPage.newMessageText,
+        time: '11:57 AM Today',
+        messageType: 'message',
+        img: 'https://66.media.tumblr.com/3ca79e6d6874b471ee9e55b6cadc448e/tumblr_outgvdQKsK1w7t6tto3_400.png'
+    };
+    state.dialogsPage.messages.push(newMessage);
+    state.dialogsPage.newMessageText = '';
+    rerenderEntireTree(state);
+}
+
+export let updateDialogMessageText = (newMessage) => {
+    state.dialogsPage.newMessageText = newMessage;
     rerenderEntireTree(state);
 }
 
