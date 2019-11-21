@@ -1,5 +1,5 @@
 let store = {
-    rerenderEntireTree: () => {},
+    rerenderEntireTree() {},
     state: {
         profilePage: {
             posts: [
@@ -29,38 +29,38 @@ let store = {
             newMessageText: ''
         }
     },
-    addPost: () => {
+    addPost() {
         let newPost = {
             id: 3,
-            message: store.state.profilePage.newPostText,
+            message: this.state.profilePage.newPostText,
             likesCount: 0
         };
-        store.state.profilePage.posts.push(newPost);
-        store.state.profilePage.newPostText = '';
-        store.rerenderEntireTree();
+        this.state.profilePage.posts.push(newPost);
+        this.state.profilePage.newPostText = '';
+        this.rerenderEntireTree();
     },
-    updateNewPostText: (newText) => {
-        store.state.profilePage.newPostText = newText;
-        store.rerenderEntireTree();
+    updateNewPostText(newText) {
+        this.state.profilePage.newPostText = newText;
+        this.rerenderEntireTree();
     },
-    addDialogMessage: () => {
+    addDialogMessage() {
         let newMessage = {
             id: 8,
-            message: store.state.dialogsPage.newMessageText,
+            message: this.state.dialogsPage.newMessageText,
             time: '11:57 AM Today',
             messageType: 'message',
             img: 'https://66.media.tumblr.com/3ca79e6d6874b471ee9e55b6cadc448e/tumblr_outgvdQKsK1w7t6tto3_400.png'
         };
-        store.state.dialogsPage.messages.push(newMessage);
-        store.state.dialogsPage.newMessageText = '';
-        store.rerenderEntireTree();
+        this.state.dialogsPage.messages.push(newMessage);
+        this.state.dialogsPage.newMessageText = '';
+        this.rerenderEntireTree();
     },
-    updateDialogMessageText: (newMessage) => {
-        store.state.dialogsPage.newMessageText = newMessage;
-        store.rerenderEntireTree();
+    updateDialogMessageText(newMessage) {
+        this.state.dialogsPage.newMessageText = newMessage;
+        this.rerenderEntireTree();
     },
-    subscribe: (observer) => {
-        store.rerenderEntireTree = observer;
+    subscribe(observer) {
+        this.rerenderEntireTree = observer;
     }
 }
 
