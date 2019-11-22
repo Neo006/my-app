@@ -16,11 +16,9 @@ const App = (props) => {
             <div className="row">
                 <Navbar/>
                 <Route path="/profile" render={() => <Profile profilePage={props.store.getState().profilePage}
-                                                              addPost={props.store.addPost.bind(props.store)}
-                                                              updateNewPostText={props.store.updateNewPostText.bind(props.store)}/>}/>
+                                                              dispatch={props.store.dispatch.bind(props.store)}/>}/>
                 <Route path="/dialogs" render={() => <Dialogs dialogsPage={props.store.getState().dialogsPage}
-                                                              addDialogMessage={props.store.addDialogMessage.bind(props.store)}
-                                                              updateDialogMessageText={props.store.updateDialogMessageText.bind(props.store)}/>}/>
+                                                              dispatch={props.store.dispatch.bind(props.store)}/>}/>
                 <Route path="/news" component={News}/>
                 <Route path="/music" component={Music}/>
                 <Route path="/settings" component={Settings}/>
