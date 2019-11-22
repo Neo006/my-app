@@ -1,6 +1,5 @@
 let store = {
-    rerenderEntireTree() {},
-    state: {
+    _state: {
         profilePage: {
             posts: [
                 {id: 1, message: 'Hi, how are you?', likesCount: '15'},
@@ -29,38 +28,42 @@ let store = {
             newMessageText: ''
         }
     },
+    getState() {
+        return this._state;
+    },
+    _callSubscriber() {},
     addPost() {
         let newPost = {
             id: 3,
-            message: this.state.profilePage.newPostText,
+            message: this._state.profilePage.newPostText,
             likesCount: 0
         };
-        this.state.profilePage.posts.push(newPost);
-        this.state.profilePage.newPostText = '';
-        this.rerenderEntireTree();
+        this._state.profilePage.posts.push(newPost);
+        this._state.profilePage.newPostText = '';
+        this._callSubscriber();
     },
     updateNewPostText(newText) {
-        this.state.profilePage.newPostText = newText;
-        this.rerenderEntireTree();
+        this._state.profilePage.newPostText = newText;
+        this._callSubscriber();
     },
     addDialogMessage() {
         let newMessage = {
             id: 8,
-            message: this.state.dialogsPage.newMessageText,
+            message: this._state.dialogsPage.newMessageText,
             time: '11:57 AM Today',
             messageType: 'message',
             img: 'https://66.media.tumblr.com/3ca79e6d6874b471ee9e55b6cadc448e/tumblr_outgvdQKsK1w7t6tto3_400.png'
         };
-        this.state.dialogsPage.messages.push(newMessage);
-        this.state.dialogsPage.newMessageText = '';
-        this.rerenderEntireTree();
+        this._state.dialogsPage.messages.push(newMessage);
+        this._state.dialogsPage.newMessageText = '';
+        this._callSubscriber();
     },
     updateDialogMessageText(newMessage) {
-        this.state.dialogsPage.newMessageText = newMessage;
-        this.rerenderEntireTree();
+        this._state.dialogsPage.newMessageText = newMessage;
+        this._callSubscriber();
     },
     subscribe(observer) {
-        this.rerenderEntireTree = observer;
+        this._callSubscriber = observer;
     }
 }
 
