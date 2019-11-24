@@ -6,6 +6,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSearch} from '@fortawesome/free-solid-svg-icons';
 import {faLocationArrow} from '@fortawesome/free-solid-svg-icons';
 import {faPaperclip} from '@fortawesome/free-solid-svg-icons';
+import {addDialogMessageActionCreator, updateDialogMessageTextActionCreator} from "../../redux/state";
 
 const Dialogs = (props) => {
 
@@ -20,12 +21,13 @@ const Dialogs = (props) => {
     let newMessageElement = React.createRef();
 
     let sendMessage = () => {
-        props.dispatch({type: 'ADD-DIALOG-MESSAGE'});
+        props.dispatch(addDialogMessageActionCreator());
     }
 
     let onMessageChange = () => {
         let text = newMessageElement.current.value;
-        props.dispatch({type: 'UPDATE-DIALOG-MESSAGE-TEXT', newMessage: text});
+        let action = updateDialogMessageTextActionCreator(text);
+        props.dispatch(action);
     }
 
     return (
