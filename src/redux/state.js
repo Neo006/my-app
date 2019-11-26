@@ -1,7 +1,5 @@
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const ADD_DIALOG_MESSAGE = 'ADD-DIALOG-MESSAGE';
-const UPDATE_DIALOG_MESSAGE_TEXT = 'UPDATE-DIALOG-MESSAGE-TEXT';
+import profileReducer from "./profile-reducer";
+import dialogsReducer from "./dialogs-reducer";
 
 let store = {
     _state: {
@@ -41,42 +39,11 @@ let store = {
         this._callSubscriber = observer;
     },
     dispatch(action) {
-        if (action.type === ADD_POST) {
-            let newPost = {
-                id: 3,
-                message: this._state.profilePage.newPostText,
-                likesCount: 0
-            };
-            this._state.profilePage.posts.push(newPost);
-            this._state.profilePage.newPostText = '';
-            this._callSubscriber();
-        } else if(action.type === UPDATE_NEW_POST_TEXT) {
-            this._state.profilePage.newPostText = action.newText;
-            this._callSubscriber();
-        }
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
 
-        if(action.type === ADD_DIALOG_MESSAGE) {
-            let newMessage = {
-                id: 8,
-                message: this._state.dialogsPage.newMessageText,
-                time: '11:57 AM Today',
-                messageType: 'message',
-                img: 'https://66.media.tumblr.com/3ca79e6d6874b471ee9e55b6cadc448e/tumblr_outgvdQKsK1w7t6tto3_400.png'
-            };
-            this._state.dialogsPage.messages.push(newMessage);
-            this._state.dialogsPage.newMessageText = '';
-            this._callSubscriber();
-        } else if (action.type === UPDATE_DIALOG_MESSAGE_TEXT) {
-            this._state.dialogsPage.newMessageText = action.newMessage;
-            this._callSubscriber();
-        }
+        this._callSubscriber();
     }
 }
-
-export const addPostActionCreator = () => ({type: ADD_POST});
-export const updateNewPostTextActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text});
-
-export const addDialogMessageActionCreator = () => ({type: ADD_DIALOG_MESSAGE});
-export const updateDialogMessageTextActionCreator = (text) => ({type: UPDATE_DIALOG_MESSAGE_TEXT, newMessage: text});
 
 export default store;

@@ -6,7 +6,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSearch} from '@fortawesome/free-solid-svg-icons';
 import {faLocationArrow} from '@fortawesome/free-solid-svg-icons';
 import {faPaperclip} from '@fortawesome/free-solid-svg-icons';
-import {addDialogMessageActionCreator, updateDialogMessageTextActionCreator} from "../../redux/state";
+import {addDialogMessageActionCreator, updateDialogMessageTextActionCreator} from "../../redux/dialogs-reducer";
 
 const Dialogs = (props) => {
 
