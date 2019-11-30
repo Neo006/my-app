@@ -6,10 +6,8 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSearch} from '@fortawesome/free-solid-svg-icons';
 import {faLocationArrow} from '@fortawesome/free-solid-svg-icons';
 import {faPaperclip} from '@fortawesome/free-solid-svg-icons';
-import {addDialogMessageActionCreator, updateDialogMessageTextActionCreator} from "../../redux/dialogs-reducer";
 
 const Dialogs = (props) => {
-
     let dialogElements = props.dialogsPage.dialogs
         .map(d => <DialogItem id={d.id} name={d.name} surname={d.surname} status={d.status} onlineStatus={d.onlineStatus}
                               img={d.img}/>);
@@ -20,14 +18,13 @@ const Dialogs = (props) => {
 
     let newMessageElement = React.createRef();
 
-    let sendMessage = () => {
-        props.dispatch(addDialogMessageActionCreator());
+    let onSendMessage = () => {
+        props.sendMessage();
     }
 
     let onMessageChange = () => {
         let text = newMessageElement.current.value;
-        let action = updateDialogMessageTextActionCreator(text);
-        props.dispatch(action);
+        props.updateDialogMessageText(text);
     }
 
     return (
@@ -96,7 +93,7 @@ const Dialogs = (props) => {
                                           className={`${s.typeMsg} form-control`}
                                           placeholder="Type your message..."></textarea>
                                 <div className="input-group-append">
-                                    <span onClick={sendMessage} className={`input-group-text ${s.sendBtn}`}><FontAwesomeIcon
+                                    <span onClick={onSendMessage} className={`input-group-text ${s.sendBtn}`}><FontAwesomeIcon
                                         icon={faLocationArrow}/></span>
                                 </div>
                             </div>
