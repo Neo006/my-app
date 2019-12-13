@@ -1,19 +1,15 @@
 import React from 'react';
 import styles from './users.module.css';
+import * as axios from 'axios';
+import userPhoto from '../../assets/images/user-logo.png';
 
 const Users = (props) => {
 
     if (props.users.length === 0) {
-        props.setUsers(
-            [
-                {id: 1, photoUrl: 'https://cdn2.iconfinder.com/data/icons/men-avatars/33/man_19-512.png',
-                    followed: true, fullName: 'Logan', status: 'I am a boss', location: {city: 'New York', country: 'USA'}},
-                {id: 2, photoUrl: 'https://image.flaticon.com/icons/png/512/53/53176.png',
-                    followed: false, fullName: 'Monica', status: 'I am a boss too', location: {city: 'Toronto', country: 'Canada'}},
-                {id: 3, photoUrl: 'https://image.flaticon.com/icons/png/512/53/53176.png',
-                    followed: true, fullName: 'Cameron', status: 'I am a boss too', location: {city: 'Los Angeles', country: 'USA'}}
-            ]
-        );
+        axios.get('https://social-network.samuraijs.com/api/1.0/users')
+            .then(response => {
+                props.setUsers(response.data.items);
+            });
     }
 
     return (
@@ -24,7 +20,7 @@ const Users = (props) => {
                         <div className="row">
                             <div className="col-md-2 text-center mb-4">
                                 <div className={styles.avatarBlock}>
-                                    <img src={u.photoUrl}/>
+                                    <img src={u.photos.small != null ? u.photos.small : userPhoto}/>
                                 </div>
                                 <div className="mt-1">
                                     {
@@ -38,12 +34,12 @@ const Users = (props) => {
                             <div className="col-md-10">
                                 <div className="row">
                                     <div className="col-md-8">
-                                        <div>{u.fullName}</div>
+                                        <div>{u.name}</div>
                                         <div>{u.status}</div>
                                     </div>
                                     <div className="col-md-4">
-                                        <div>{u.location.country}</div>
-                                        <div>{u.location.city}</div>
+                                        <div>{'u.location.country'}</div>
+                                        <div>{'u.location.city'}</div>
                                     </div>
                                 </div>
                             </div>
