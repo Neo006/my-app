@@ -1,7 +1,8 @@
 import React from 'react';
 import s from './header.module.css';
+import {NavLink} from "react-router-dom";
 
-const Header = () => {
+const Header = (props) => {
     return (
         <header>
             <nav className={`${s.navbar} navbar navbar-expand-lg w-100 navbar-light`}>
@@ -36,11 +37,11 @@ const Header = () => {
                             <a className="nav-link disabled" href="#">Disabled</a>
                         </li>
                     </ul>
-                    <form className="form-inline my-2 my-lg-0">
-                        <input className="form-control mr-sm-2" type="search" placeholder="Search"
-                               aria-label="Search"/>
-                        <button className="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-                    </form>
+                    <div>
+                        { props.isAuth ? props.login
+                            :<NavLink to={'/login'}>Login</NavLink> }
+
+                    </div>
                 </div>
             </nav>
         </header>
