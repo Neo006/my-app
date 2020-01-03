@@ -55,25 +55,11 @@ const Users = (props) => {
                                     {
                                         u.followed
                                             ? <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
-                                                props.toggleFollowingProgress(true, u.id);
-                                                usersAPI.getUnfollowUser(u.id)
-                                                    .then(data => {
-                                                        if (data.resultCode == 0) {
-                                                            props.unfollow(u.id);
-                                                        }
-                                                        props.toggleFollowingProgress(false, u.id);
-                                                    });
-                                            }} className="btn btn-success">Unfollow</button>
+                                                props.unfollow(u.id)}} className="btn btn-success">
+                                                Unfollow</button>
                                             : <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
-                                                props.toggleFollowingProgress(true, u.id);
-                                                usersAPI.getFollowUser(u.id)
-                                                    .then(data => {
-                                                        if (data.resultCode == 0) {
-                                                            props.follow(u.id);
-                                                        }
-                                                        props.toggleFollowingProgress(false, u.id);
-                                                    });
-                                            }} className="btn btn-success">Follow</button>
+                                                props.follow(u.id) }} className="btn btn-success">
+                                                Follow</button>
                                     }
 
                                 </div>
