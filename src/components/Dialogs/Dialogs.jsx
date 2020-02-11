@@ -7,25 +7,44 @@ import {faSearch} from '@fortawesome/free-solid-svg-icons';
 import {faLocationArrow} from '@fortawesome/free-solid-svg-icons';
 import {faPaperclip} from '@fortawesome/free-solid-svg-icons';
 import {Redirect} from "react-router-dom";
+import {Field, reduxForm} from "redux-form";
+
+const AddMessageForm = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <div className="input-group">
+                <div className="input-group-append">
+                    <span className={`input-group-text ${s.attachBtn}`}>
+                        <FontAwesomeIcon icon={faPaperclip}/>
+                    </span>
+                </div>
+                <Field name="newMessageBody" component="textarea"
+                       className={`${s.typeMsg} form-control`}
+                       placeholder="Type your message..."/>
+                <div className="input-group-append">
+                    <button className={`input-group-text ${s.sendBtn}`}>
+                        <FontAwesomeIcon icon={faLocationArrow}/>
+                    </button>
+                </div>
+            </div>
+        </form>
+    )
+}
+
+const AddMessageReduxForm = reduxForm({form: 'addMessageForm'})(AddMessageForm)
 
 const Dialogs = (props) => {
     let dialogElements = props.dialogsPage.dialogs
-        .map(d => <DialogItem id={d.id} name={d.name} surname={d.surname} status={d.status} onlineStatus={d.onlineStatus}
+        .map(d => <DialogItem id={d.id} name={d.name} surname={d.surname} status={d.status}
+                              onlineStatus={d.onlineStatus}
                               img={d.img}/>);
 
     let messageElement = props.dialogsPage.messages
         .map(m => <Message message={m.message} time={m.time} messageType={m.messageType}
-                                                   img={m.img}/>);
+                           img={m.img}/>);
 
-    let newMessageElement = React.createRef();
-
-    let onSendMessage = () => {
-        props.sendMessage();
-    }
-
-    let onMessageChange = () => {
-        let text = newMessageElement.current.value;
-        props.updateDialogMessageText(text);
+    let addMessage = (values) => {
+        props.sendMessage(values.newMessageBody);
     }
 
     if (!props.isAuth) return <Redirect to={'/login'}/>;
@@ -85,21 +104,7 @@ const Dialogs = (props) => {
                             {messageElement}
                         </div>
                         <div className={`${s.cardFooter} card-footer`}>
-                            <div className="input-group">
-                                <div className="input-group-append">
-                                    <span className={`input-group-text ${s.attachBtn}`}><FontAwesomeIcon
-                                        icon={faPaperclip}/></span>
-                                </div>
-                                <textarea onChange={onMessageChange}
-                                          ref={newMessageElement}
-                                          value={props.dialogsPage.newMessageText}
-                                          className={`${s.typeMsg} form-control`}
-                                          placeholder="Type your message..."></textarea>
-                                <div className="input-group-append">
-                                    <span onClick={onSendMessage} className={`input-group-text ${s.sendBtn}`}><FontAwesomeIcon
-                                        icon={faLocationArrow}/></span>
-                                </div>
-                            </div>
+                            <AddMessageReduxForm onSubmit={addMessage}/>
                         </div>
                     </div>
                 </div>

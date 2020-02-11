@@ -1,5 +1,4 @@
 const ADD_DIALOG_MESSAGE = 'ADD-DIALOG-MESSAGE';
-const UPDATE_DIALOG_MESSAGE_TEXT = 'UPDATE-DIALOG-MESSAGE-TEXT';
 
 let initialState = {
     dialogs: [
@@ -18,8 +17,7 @@ let initialState = {
         {id: 5, message: 'I am looking for your next templates', time: '9:07 AM, Today', messageType: 'answer', img: 'https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg'},
         {id: 6, message: 'Ok, thank you have a good day', time: '9:10 AM, Today', messageType: 'message', img: 'https://66.media.tumblr.com/3ca79e6d6874b471ee9e55b6cadc448e/tumblr_outgvdQKsK1w7t6tto3_400.png'},
         {id: 7, message: 'Bye, see you', time: '9:12 AM, Today', messageType: 'answer', img: 'https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg'}
-    ],
-    newMessageText: ''
+    ]
 }
 
 const dialogsReducer = (state = initialState, action) => {
@@ -28,28 +26,20 @@ const dialogsReducer = (state = initialState, action) => {
         case ADD_DIALOG_MESSAGE:
             let newMessage = {
                 id: 8,
-                message: state.newMessageText,
+                message: action.newMessageBody,
                 time: '11:57 AM Today',
                 messageType: 'message',
                 img: 'https://66.media.tumblr.com/3ca79e6d6874b471ee9e55b6cadc448e/tumblr_outgvdQKsK1w7t6tto3_400.png'
             };
             return  {
                 ...state,
-                newMessageText: '',
                 messages: [...state.messages, newMessage]
             };
-        case UPDATE_DIALOG_MESSAGE_TEXT: {
-            return {
-                ...state,
-                newMessageText: action.newMessage
-            };
-        }
         default:
             return state;
     }
 }
 
-export const addDialogMessageActionCreator = () => ({type: ADD_DIALOG_MESSAGE});
-export const updateDialogMessageTextActionCreator = (text) => ({type: UPDATE_DIALOG_MESSAGE_TEXT, newMessage: text});
+export const addDialogMessageActionCreator = (newMessageBody) => ({type: ADD_DIALOG_MESSAGE, newMessageBody});
 
 export default dialogsReducer;
