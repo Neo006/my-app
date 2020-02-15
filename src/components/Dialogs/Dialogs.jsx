@@ -8,6 +8,10 @@ import {faLocationArrow} from '@fortawesome/free-solid-svg-icons';
 import {faPaperclip} from '@fortawesome/free-solid-svg-icons';
 import {Redirect} from "react-router-dom";
 import {Field, reduxForm} from "redux-form";
+import {Textarea} from "../common/FormControls/FormControls";
+import {maxLengthCreator, required} from "../../utils/validators/validators";
+
+let maxLength50 = maxLengthCreator(50);
 
 const AddMessageForm = (props) => {
     return (
@@ -18,7 +22,9 @@ const AddMessageForm = (props) => {
                         <FontAwesomeIcon icon={faPaperclip}/>
                     </span>
                 </div>
-                <Field name="newMessageBody" component="textarea"
+                <Field name="newMessageBody"
+                       component={Textarea}
+                       validate={[required, maxLength50]}
                        className={`${s.typeMsg} form-control`}
                        placeholder="Type your message..."/>
                 <div className="input-group-append">
